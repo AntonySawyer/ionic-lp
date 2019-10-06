@@ -2,6 +2,14 @@ section {
   margin: 0 10px;
 }
 
+.desktop-only {
+  display: none;
+}
+
+.big-font {
+  font-size: 32px;
+}
+
 .promo>span {
   display: block;
   font-size: 36px;
@@ -23,14 +31,29 @@ section {
   text-transform: uppercase;
 }
 
+.usps {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.usps figure {
+  margin: 0;
+  width: 225px;
+}
+
+.usps img {
+  width: 75%;
+  border: 0;
+}
+
+.usps p {
+  text-align: right;
+}
+
 .special-offer {
   color: white;
   background-color: #dcb3ad;
   padding: 25px;
-}
-
-.special-offer p {
-  font-size: 32px;
 }
 
 .delimeter {
@@ -133,10 +156,6 @@ select {
   margin-bottom: 25px;
 }
 
-.pay-btn p:first-child {
-  font-size: 32px;
-}
-
 .pay-btn p:first-child::before {
   content: '>';
   margin-right: 25px;
@@ -157,10 +176,6 @@ select {
 .secure-promise {
   background-color: #6ac8b3;
   padding: 25px;
-}
-
-.secure-promise>p {
-  font-size: 32px;
 }
 
 h3 {
@@ -203,6 +218,7 @@ p {
 }
 
 footer {
+  width: 100%;
   background-color: #303030;
   color: #ffffff;
   padding: 40px;
@@ -219,4 +235,58 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+@media screen and (min-width: 992px) {
+  .desktop-only {
+    display: flex;
+  }
+
+  .big-font {
+    font-size: 19px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  section {
+    width: 47%;
+  }
+
+  .coupon {
+    margin: 0;
+    width: 20%;
+    float: left;
+  }
+
+  .product-descr {
+    flex-direction: column;
+  }
+
+  .product-descr p {
+    display: block;
+    color: white;
+    background-color: #1e2023;
+    margin-top: 20px;
+    padding: 10px;
+    font-style: italic;
+  }
+
+  .product-descr p:nth-child(2n) {
+    background-color: #dcb3ad;
+  }
+
+  #secure-block figure,
+  #secure-block p {
+    display: inline-block;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }

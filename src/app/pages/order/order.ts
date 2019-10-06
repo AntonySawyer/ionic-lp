@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
+import { MenuController } from '@ionic/angular';
 
 
 
@@ -18,21 +19,12 @@ export class OrderPage {
   submitted = false;
 
   constructor(
+    public menu: MenuController,
     public userData: UserData,
     public router: Router
   ) { }
 
-  onLogin(form: NgForm) {
-    this.submitted = true;
-
-    if (form.valid) {
-      this.userData.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
-    }
+  ionViewWillEnter() {
+    this.menu.enable(false);
   }
-
-  onSignup() {
-    this.router.navigateByUrl('/signup');
-  }
-  
 }
