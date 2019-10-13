@@ -93,7 +93,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 25px;
+  padding: 40px 25px;
 }
 
 input[type="radio"] {
@@ -103,7 +103,7 @@ input[type="radio"] {
 input[type="radio"]+label {
   display: inline-flex;
   flex-direction: row;
-  width: 270px;
+  width: 45%;
 }
 
 .radio-wrapper {
@@ -135,9 +135,27 @@ select {
   max-height: 55px;
 }
 
-input.half-input,
-select.half-input {
-  width: 245px;
+.half-input,
+.full-input {
+  position: relative;
+
+  input {
+    position: absolute;
+    bottom: 0px;
+  }
+}
+
+.half-input {
+  width: 45%;
+}
+
+.full-input {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.zero-margin {
+  margin: 0;
 }
 
 select {
@@ -152,7 +170,23 @@ select {
 
 .input-descr {
   font-size: 11px;
+  position: absolute;
+  top: 12px;
 }
+
+.error.input-descr {
+  color: red;
+  top: -57px;
+}
+
+.error.input-descr.bottom-descr {
+  top: 0;
+}
+
+.error.input-descr+input {
+  border: 1px solid red;
+}
+
 
 .pay-btn {
   color: white;
@@ -196,13 +230,14 @@ h3 {
 
 .delimeter-header {
   font-size: 15px;
+  margin: 15px 0 0 0;
 }
 
 .delimeter-header::after {
   content: " ";
   display: inline-block;
   position: relative;
-  width: 420px;
+  width: 50vw;
   height: 4px;
   background-color: #616c83;
   bottom: 4px;
@@ -310,6 +345,10 @@ footer a:hover {
 
   .product-descr p:nth-child(2n) {
     background-color: #dcb3ad;
+  }
+
+  .delimeter-header::after {
+    width: 420px;
   }
 
   #secure-block figure {

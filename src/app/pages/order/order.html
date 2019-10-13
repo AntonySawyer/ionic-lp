@@ -39,10 +39,12 @@
         <figure>
           <img src="../../../assets/img/checkout/usps.jpg" alt="usps logo">
         </figure>
-        <p class="bold">Your 2 X 24/7 <span class="upper">lip treatment</span> Will Be <span class="underline">Delivered </span>Within 7 Business Days</p>
+        <p class="bold">Your 2 X 24/7 <span class="upper">lip treatment</span> Will Be <span class="underline">Delivered
+          </span>Within 7 Business Days</p>
       </article>
       <article class="special-offer center">
-        <p class="big-font">Tell Us Where To Send <span class="bold upper">your 2 X 24/7 lip treatment normally</span><span class="bold">
+        <p class="big-font">Tell Us Where To Send <span class="bold upper">your 2 X 24/7 lip treatment
+            normally</span><span class="bold">
             $39.90ea</span></p>
       </article>
       <input type="radio" name="order-info" id="shipping" checked>
@@ -63,25 +65,64 @@
       </label>
       <div class="delimeter"></div>
       <div class="quantity-block order-info">
-        <input type="number" value="1" name="" id="">
+        <input type="number" required value="1">
       </div>
-      <div class="shipping-block order-info">
-        <input type="text" class="half-input" placeholder="First Name" name="" id="">
-        <input type="text" class="half-input" placeholder="Last Name" name="" id="">
-        <input type="text" placeholder="Email Address" name="" id="">
-        <input type="text" placeholder="Mobile Phone Number" name="" id="">
-        <p class="input-descr">* Mobile phone number used to provied tracking information</p>
+      <div [formGroup]=orderForm class="shipping-block order-info">
+        <div class="half-input">
+          <div class="error input-descr" *ngIf="isControlInvalid('firstName')">
+            First name is mandatory field!
+          </div>
+          <input type="text" formControlName="firstName" placeholder="First Name">
+        </div>
+        <div class="half-input">
+          <div class="error input-descr" *ngIf="isControlInvalid('lastName')">
+            Last Name is mandatory field!
+          </div>
+          <input type="text" formControlName="lastName" placeholder="Last Name">
+        </div>
+        <div class="full-input">
+          <div class="error input-descr" *ngIf="isControlInvalid('email')">
+            Email Address is mandatory field!
+          </div>
+          <input type="email" formControlName="email" placeholder="Email Address">
+        </div>
+        <div class="full-input">
+          <div class="error input-descr" *ngIf="isControlInvalid('phone')">
+            Mobile Phone Number is mandatory field!
+          </div>
+          <input type="tel" formControlName="phone" placeholder="Mobile Phone Number" pattern="[0-9]{10}">
+          <p class="input-descr">* Mobile phone number used to provied tracking information</p>
+        </div>
         <h3 class="delimeter-header upper bold">Shipping</h3>
-        <input type="text" placeholder="Address Line 1" name="" id="">
-        <input type="text" placeholder="city" name="" id="">
-        <select name="" id="">
-          <option value="United States">United States</option>
-          <option value="Canada">Canada</option>
-        </select>
-        <select class="half-input" name="" id="">
-          <option value="State/Province">State/Province</option>
-        </select>
-        <input type="text" class="half-input" placeholder="Zip/Postal Code" name="" id="">
+        <div class="full-input">
+          <div class="error input-descr" *ngIf="isControlInvalid('address')">
+            Address is mandatory field!
+          </div>
+          <input type="text" formControlName="address" placeholder="Address Line 1">
+        </div>
+        <div class="full-input">
+          <div class="error input-descr" *ngIf="isControlInvalid('city')">
+            City is mandatory field!
+          </div>
+          <input type="text" formControlName="city" placeholder="City">
+        </div>
+        <div class="full-input zero-margin">
+          <select name="" id="">
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+          </select>
+        </div>
+        <div class="half-input">
+          <select>
+            <option value="State/Province">State/Province</option>
+          </select>
+        </div>
+        <div class="half-input">
+          <div class="error input-descr bottom-descr" *ngIf="isControlInvalid('zip')">
+            Postal Code is mandatory field!
+          </div>
+          <input type="text" formControlName="zip" placeholder="Zip/Postal Code">
+        </div>
         <a href="#">
           <div class="pay-btn center">
             <p class="big-font">Add Payment Information</p>

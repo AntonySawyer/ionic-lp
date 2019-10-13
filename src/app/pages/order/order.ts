@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserData } from '../../providers/user-data';
@@ -15,7 +15,17 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./order.scss'],
 })
 export class OrderPage {
-  login: UserOptions = { username: '', password: '' };
+  orderForm: FormGroup = new FormGroup({
+
+    firstName:  new FormControl('', [Validators.required]),
+    lastName:  new FormControl('', [Validators.required]),
+    email:  new FormControl('', [Validators.required, Validators.email]),
+    address:  new FormControl('', [Validators.required]),
+    phone:  new FormControl('', [Validators.required]),
+    zip:  new FormControl('', [Validators.required]),
+    city:  new FormControl('', [Validators.required])
+  });
+
   submitted = false;
 
   constructor(
@@ -26,5 +36,11 @@ export class OrderPage {
 
   ionViewWillEnter() {
     this.menu.enable(false);
+  }
+
+  isControlInvalid(controlName: string): boolean {
+    const control = this.orderForm.controls[controlName];
+    const result = control.invalid && control.touched;
+    return result;
   }
 }
