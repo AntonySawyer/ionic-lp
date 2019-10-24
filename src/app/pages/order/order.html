@@ -47,89 +47,97 @@
             normally</span><span class="bold">
             $39.90ea</span></p>
       </article>
-      <input type="radio" name="order-info" id="shipping" checked>
-      <label for="shipping">
-        <span class="bold numb">1</span>
-        <div class="radio-wrapper">
-          <span class="bold title">SHIPPING</span>
-          <span class="descr">Where Should We Ship Your Product?</span>
+
+      <ion-radio-group>
+        <ion-item id="shipping">
+          <ion-radio checked></ion-radio>
+          <ion-label>
+            <span class="bold numb">1</span>
+            <div class="radio-wrapper">
+              <span class="bold title">SHIPPING</span>
+              <span class="descr">Where Should We Ship Your Product?</span>
+            </div>
+          </ion-label>
+        </ion-item>
+        <ion-item id="quantity">
+          <ion-radio></ion-radio>
+          <ion-label>
+            <span class="bold numb">2</span>
+            <div class="radio-wrapper">
+              <span class="bold title">QUANTITY</span>
+              <span class="descr">How Many Would You Like?</span>
+            </div>
+          </ion-label>
+        </ion-item>
+        <div class="delimeter"></div>
+        <div class="quantity-block order-info">
+          <ion-input type="number" required value="1"></ion-input>
         </div>
-      </label>
-      <input type="radio" name="order-info" id="quantity">
-      <label for="quantity">
-        <span class="bold numb">2</span>
-        <div class="radio-wrapper">
-          <span class="bold title">QUANTITY</span>
-          <span class="descr">How Many Would You Like?</span>
-        </div>
-      </label>
-      <div class="delimeter"></div>
-      <div class="quantity-block order-info">
-        <input type="number" required value="1">
-      </div>
-      <div [formGroup]=orderForm class="shipping-block order-info">
-        <div class="half-input">
-          <div class="error input-descr" *ngIf="isControlInvalid('firstName')">
-            First name is mandatory field!
+        <div [formGroup]=orderForm class="shipping-block order-info">
+          <div class="half-input">
+            <div class="error input-descr" *ngIf="isControlInvalid('firstName')">
+              First name is mandatory field!
+            </div>
+            <ion-input type="text" formControlName="firstName" placeholder="First Name"></ion-input>
           </div>
-          <input type="text" formControlName="firstName" placeholder="First Name">
-        </div>
-        <div class="half-input">
-          <div class="error input-descr" *ngIf="isControlInvalid('lastName')">
-            Last Name is mandatory field!
+          <div class="half-input">
+            <div class="error input-descr" *ngIf="isControlInvalid('lastName')">
+              Last Name is mandatory field!
+            </div>
+            <ion-input type="text" formControlName="lastName" placeholder="Last Name"></ion-input>
           </div>
-          <input type="text" formControlName="lastName" placeholder="Last Name">
-        </div>
-        <div class="full-input">
-          <div class="error input-descr" *ngIf="isControlInvalid('email')">
-            Email Address is mandatory field!
+          <div class="full-input">
+            <div class="error input-descr" *ngIf="isControlInvalid('email')">
+              Email Address is mandatory field!
+            </div>
+            <ion-input type="email" formControlName="email" placeholder="Email Address"></ion-input>
           </div>
-          <input type="email" formControlName="email" placeholder="Email Address">
-        </div>
-        <div class="full-input">
-          <div class="error input-descr" *ngIf="isControlInvalid('phone')">
-            Mobile Phone Number is mandatory field!
+          <div class="full-input">
+            <div class="error input-descr" *ngIf="isControlInvalid('phone')">
+              Mobile Phone Number is mandatory field!
+            </div>
+            <ion-input type="tel" formControlName="phone" placeholder="Mobile Phone Number" pattern="[0-9]{10}"></ion-input>
+            <p class="input-descr">* Mobile phone number used to provied tracking information</p>
           </div>
-          <input type="tel" formControlName="phone" placeholder="Mobile Phone Number" pattern="[0-9]{10}">
-          <p class="input-descr">* Mobile phone number used to provied tracking information</p>
-        </div>
-        <h3 class="delimeter-header upper bold">Shipping</h3>
-        <div class="full-input">
-          <div class="error input-descr" *ngIf="isControlInvalid('address')">
-            Address is mandatory field!
+          <h3 class="delimeter-header upper bold">Shipping</h3>
+          <div class="full-input">
+            <div class="error input-descr" *ngIf="isControlInvalid('address')">
+              Address is mandatory field!
+            </div>
+            <ion-input type="text" formControlName="address" placeholder="Address Line 1"></ion-input>
           </div>
-          <input type="text" formControlName="address" placeholder="Address Line 1">
-        </div>
-        <div class="full-input">
-          <div class="error input-descr" *ngIf="isControlInvalid('city')">
-            City is mandatory field!
+          <div class="full-input">
+            <div class="error input-descr" *ngIf="isControlInvalid('city')">
+              City is mandatory field!
+            </div>
+            <ion-input type="text" formControlName="city" placeholder="City"></ion-input>
           </div>
-          <input type="text" formControlName="city" placeholder="City">
-        </div>
-        <div class="full-input zero-margin">
-          <select name="" id="">
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-          </select>
-        </div>
-        <div class="half-input">
-          <select>
-            <option value="State/Province">State/Province</option>
-          </select>
-        </div>
-        <div class="half-input">
-          <div class="error input-descr bottom-descr" *ngIf="isControlInvalid('zip')">
-            Postal Code is mandatory field!
+          <div class="full-input zero-margin">
+            <ion-select interface="popover" value="United States">
+              <ion-select-option value="United States">United States</ion-select-option>
+              <ion-select-option value="Canada">Canada</ion-select-option>
+            </ion-select>
           </div>
-          <input type="text" formControlName="zip" placeholder="Zip/Postal Code">
-        </div>
-        <a href="#">
-          <div class="pay-btn center">
-            <p class="big-font">Add Payment Information</p>
-            <p class="tiny-text">USA Offer Only</p>
+          <div class="half-input">
+            <ion-select interface="popover" value="State/Province">
+              <ion-select-option value="State/Province">State/Province</ion-select-option>
+              <ion-select-option value="Something else">Something else</ion-select-option>
+            </ion-select>
           </div>
-        </a>
-      </div>
+          <div class="half-input">
+            <div class="error input-descr bottom-descr" *ngIf="isControlInvalid('zip')">
+              Postal Code is mandatory field!
+            </div>
+            <ion-input type="text" formControlName="zip" placeholder="Zip/Postal Code"></ion-input>
+          </div>
+          <a href="#">
+            <div class="pay-btn center">
+              <p class="big-font">Add Payment Information</p>
+              <p class="tiny-text">USA Offer Only</p>
+            </div>
+          </a>
+        </div>
+      </ion-radio-group>
       <p class="pay-annotation tiny-text center">We Respect Your Privacy & Information</p>
       <article id="secure-block" class="center">
         <div class="secure-promise">
@@ -173,14 +181,22 @@
       <div>
         <p class="bold feed-name">Denise</p>
         <p>
-          <span class="stars">★★★★★</span>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
         </p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor veritatis iste dolorum recusandae mollitia
           voluptates temporibus dolores qui. Alias vel accusamus, ea enim dolor sit minus quo assumenda temporibus
           mollitia!</p>
         <p class="bold feed-name">Amy</p>
         <p>
-          <span class="stars">★★★★★</span>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
         </p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor veritatis iste dolorum recusandae mollitia
           voluptates temporibus dolores qui. Alias vel accusamus, ea enim dolor sit minus quo assumenda temporibus
@@ -189,19 +205,31 @@
           tempora deserunt!</p>
         <p class="bold feed-name">Ellen</p>
         <p>
-          <span class="stars">★★★★★</span>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
         </p>
         <p>Love Mine</p>
         <p class="bold feed-name">Marie</p>
         <p>
-          <span class="stars">★★★★★</span>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
         </p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor veritatis iste dolorum recusandae mollitia
           voluptates temporibus dolores qui. Alias vel accusamus, ea enim dolor sit minus quo assumenda temporibus
           mollitia!</p>
         <p class="bold feed-name">Julie</p>
         <p>
-          <span class="stars">★★★★★</span>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
         </p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor veritatis iste dolorum recusandae mollitia
           voluptates temporibus dolores qui. Alias vel accusamus, ea enim dolor sit minus quo assumenda temporibus

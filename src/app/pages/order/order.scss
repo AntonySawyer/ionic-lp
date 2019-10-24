@@ -73,7 +73,7 @@ section {
   border-color: transparent transparent #ff7400 transparent;
 }
 
-#quantity:checked~.delimeter::before {
+#quantity.item-radio-checked~.delimeter::before {
   left: 335px;
 }
 
@@ -88,22 +88,24 @@ section {
   height: 640px;
 }
 
-#shipping:checked~div.shipping-block,
-#quantity:checked~div.quantity-block {
+#shipping.item-radio-checked~div.shipping-block,
+#quantity.item-radio-checked~div.quantity-block {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 40px 25px;
 }
 
-input[type="radio"] {
-  display: none;
-}
-
-input[type="radio"]+label {
+ion-radio-group>ion-item {
   display: inline-flex;
   flex-direction: row;
   width: 45%;
+}
+
+ion-radio {
+  width: 0;
+  --color: transparent;
+  --color-checked: transparent;
 }
 
 .radio-wrapper {
@@ -114,31 +116,44 @@ input[type="radio"]+label {
 .numb {
   font-size: 36px;
   margin-right: 20px;
+  float: left;
 }
 
 .title {
   color: #616c83;
 }
 
-#shipping:checked+label .title,
-#quantity:checked+label .title {
+.descr {
+  font-size: 11px;
+}
+
+#shipping.item-radio-checked>ion-label .title,
+#quantity.item-radio-checked>ion-label .title {
   color: #ff7400;
 }
 
+ion-input,
+ion-select,
 input,
 select {
   background-color: #f1f1f1;
-  padding: 5px;
+  padding-left: 15px;
   margin-top: 10px;
   width: 100%;
   height: 45px;
   max-height: 55px;
+  border: 1px solid #616c83;
+}
+
+.select-text {
+  margin: auto;
 }
 
 .half-input,
 .full-input {
   position: relative;
 
+  ion-input,
   input {
     position: absolute;
     bottom: 0px;
@@ -272,7 +287,7 @@ p {
   margin-top: 10px;
 }
 
-.stars {
+ion-icon[name="star"] {
   font-size: 32px;
   line-height: 1.2;
   color: #ffd203;
